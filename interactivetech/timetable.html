@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wurzburg Transportation</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Your custom stylesheet -->
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d50041;">
+        <a class="navbar-brand" href="index.html">Wurzburg Transport</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <!-- Add more navbar items as needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Timetable Content -->
+    <div class="container timetable-container">
+        <h1>Timetable</h1>
+
+        <!-- Display Search Parameters -->
+        <p id="searchParams"></p>
+
+        <!-- Timetable Table -->
+        <table class="table timetable-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Bus/Tram Number</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                </tr>
+            </thead>
+            <tbody id="timetableBody">
+                <!-- Timetable entries will be added here using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5">
+        <div class="container footer-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@wurzburgtransport.com</p>
+                    <p>Phone: +49 123 456 789</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for updates.</p>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2024 Wurzburg Transport</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .footer-container {
+            padding-top: 20px; /* Adjust the value as needed */
+        }
+    </style>
+
+    <!-- Bootstrap and FontAwesome JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Dummy data for demonstration
+            var dummyTimetableData = [
+                { time: "08:00", number: "Bus 101", departure: "Würzburg Hbf", arrival: "Würzburg Zellerau" },
+                { time: "09:15", number: "Tram 202", departure: "Würzburg Hbf", arrival: "Würzburg Zellerau" },
+                { time: "10:30", number: "Bus 103", departure: "Würzburg Zellerau", arrival: "Würzburg Hbf" },
+                { time: "11:45", number: "Tram 204", departure: "Würzburg Hbf", arrival: "Würzburg Zellerau" },
+                { time: "13:00", number: "Bus 105", departure: "Würzburg Zellerau", arrival: "Würzburg Hbf" },
+                { time: "14:15", number: "Tram 206", departure: "Würzburg Hbf", arrival: "Würzburg Zellerau" },
+                { time: "15:30", number: "Bus 107", departure: "Würzburg Zellerau", arrival: "Würzburg Hbf" },
+                { time: "16:45", number: "Tram 208", departure: "Würzburg Hbf", arrival: "Würzburg Zellerau" },
+                { time: "18:00", number: "Bus 109", departure: "Würzburg Zellerau", arrival: "Würzburg Hbf" },
+                { time: "19:15", number: "Tram 210", departure: "Würzburg Hbf", arrival: "Würzburg Zellerau" },
+                { time: "20:30", number: "Bus 111", departure: "Würzburg Zellerau", arrival: "Würzburg Hbf" },
+                // Add more dummy timetable entries as needed
+            ];
+    
+            // Display search parameters
+            var fromStation = "Würzburg Hbf";
+            var toStation = "Würzburg Zellerau";
+            var travelDate = "2024-01-24";
+            document.getElementById("searchParams").innerText = "From: " + fromStation + " | To: " + toStation + " | Date: " + travelDate;
+    
+            // Generate a dummy timetable
+            var timetableBody = document.getElementById("timetableBody");
+    
+            // Loop through the dummy data and add rows to the timetable
+            dummyTimetableData.forEach(function (entry) {
+                var row = timetableBody.insertRow();
+    
+                // Add timetable details to the row
+                row.insertCell(0).innerText = entry.time;
+                row.insertCell(1).innerText = entry.number;
+                row.insertCell(2).innerText = entry.departure;
+                row.insertCell(3).innerText = entry.arrival;
+    
+                // Make each timetable row clickable
+                row.style.cursor = "pointer"; // Set cursor to indicate clickability
+                row.addEventListener("click", function () {
+                    // Handle the click event, e.g., redirect to a ticket purchase page
+                    // You can replace '#' with the actual URL of your purchase page
+                    window.location.href = 'pay.html';
+                });
+            });
+        });
+    </script>
+
+<style>
+    .footer-container {
+        padding-top: 20px; /* Adjust the value as needed */
+    }
+
+    .timetable-table tbody tr:hover {
+        background-color: #d50041;
+        color: white;
+    }
+</style>
+
+    
+    
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ... other head content ... -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Your custom stylesheet -->
+    <link rel="stylesheet" href="styles.css" type="text/css">
+
+    <!-- ... other head content ... -->
+</head>
+
+
+    <style>
+        /* Add your custom styles for the payment page here */
+        .selected-item {
+            background-color: #d50041;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+        }
+
+        .payment-method {
+            margin-right: 20px;
+            font-size: 24px;
+        }
+
+
+        
+    </style>
+
+
+<body>
+
+    <!-- Navbar (Copy from the timetable page) -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d50041;">
+        <a class="navbar-brand" href="index.html">Wurzburg Transport</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <!-- Add more navbar items as needed -->
+            </ul>
+        </div>
+    </nav>
+
+    
+
+<!-- Selected Item Section -->
+<div class="container selected-item">
+    <h2>Selected Item</h2>
+    <p id="selectedTime">Time: 08:00</p>
+    <p id="selectedNumber">Bus/Tram Number: Bus 101 <i class="fas fa-bus" style="color: white;"></i></p>
+    <p id="selectedFromStation">From: Würzburg Hbf</p>
+    <p id="selectedToStation">To: Würzburg Zellerau</p>
+</div>
+
+
+
+    <!-- Payment Details Section -->
+    <div class="container payment-methods">
+        <h2>Payment Methods</h2>
+        <button class="btn btn-light payment-method" data-toggle="modal" data-target="#creditCardModal">
+            <i class="fab fa-cc-visa"></i> Credit Card
+        </button>
+        <button class="btn btn-light payment-method" data-toggle="modal" data-target="#mastercardModal">
+            <i class="fab fa-cc-mastercard"></i> MasterCard
+        </button>
+        <button class="btn btn-light payment-method" data-toggle="modal" data-target="#paypalModal">
+            <i class="fab fa-cc-paypal"></i> PayPal
+        </button>
+        <button class="btn btn-light payment-method" data-toggle="modal" data-target="#applePayModal">
+            <i class="fab fa-apple-pay"></i> Apple Pay
+        </button>
+        <button class="btn btn-light payment-method" data-toggle="modal" data-target="#googlePayModal">
+            <i class="fab fa-google-pay"></i> Google Pay
+        </button>
+    </div>
+
+    <!-- Modals for Payment Details -->
+    <!-- Credit Card Modal -->
+    <div class="modal fade" id="creditCardModal" tabindex="-1" role="dialog" aria-labelledby="creditCardModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="creditCardModalLabel">Credit Card Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add credit card input fields here -->
+                    <label for="creditCardNumber">Credit Card Number:</label>
+                    <input type="text" id="creditCardNumber" class="form-control" required>
+                    <label for="expirationDate">Expiration Date:</label>
+                    <input type="text" id="expirationDate" class="form-control" required>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" class="form-control" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MasterCard Modal (similar structure as Credit Card Modal) -->
+    <div class="modal fade" id="mastercardModal" tabindex="-1" role="dialog" aria-labelledby="mastercardModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="creditCardModalLabel">Credit Card Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add credit card input fields here -->
+                    <label for="creditCardNumber">Credit Card Number:</label>
+                    <input type="text" id="creditCardNumber" class="form-control" required>
+                    <label for="expirationDate">Expiration Date:</label>
+                    <input type="text" id="expirationDate" class="form-control" required>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" class="form-control" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PayPal Modal (similar structure as Credit Card Modal) -->
+    <div class="modal fade" id="paypalModal" tabindex="-1" role="dialog" aria-labelledby="paypalModalLabel"
+        aria-hidden="true">
+        <!-- Add PayPal modal content here -->
+    </div>
+
+    <!-- Apple Pay Modal (similar structure as Credit Card Modal) -->
+    <div class="modal fade" id="applePayModal" tabindex="-1" role="dialog" aria-labelledby="applePayModalLabel"
+        aria-hidden="true">
+        <!-- Add Apple Pay modal content here -->
+    </div>
+
+    <!-- Google Pay Modal (similar structure as Credit Card Modal) -->
+    <div class="modal fade" id="googlePayModal" tabindex="-1" role="dialog" aria-labelledby="googlePayModalLabel"
+        aria-hidden="true">
+        <!-- Add Google Pay modal content here -->
+    </div>
+
+
+
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <!-- ... your existing head content ... -->
+    
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+        <!-- Leaflet Routing Machine CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    
+        <style>
+            /* Add your custom styles here */
+            #map {
+                height: 400px;
+                margin-top: 20px; /* Adjust the top margin as needed */
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container mt-5">
+            <!-- Your existing content -->
+    
+            <!-- Add this div where you want the map to appear -->
+            <div id="map" class="rounded"></div>
+        </div>
+    
+        <!-- Your existing scripts -->
+        
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+        <!-- Leaflet Routing Machine JS -->
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Initialize the map
+                var map = L.map('map').setView([49.791304, 9.953355], 14);
+    
+                // Add a base map layer (OpenStreetMap)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+    
+                // Function to generate a random line
+                function generateRandomLine() {
+                    var line = [];
+                    for (var j = 0; j < 3; j++) {
+                        var lat = 49.78 + Math.random() * 0.03; // Random latitude within a range
+                        var lng = 9.92 + Math.random() * 0.1;  // Random longitude within a range
+                        line.push([lat, lng]);
+                    }
+                    return line;
+                }
+    
+                // Create a random route
+                var randomRoute = generateRandomLine();
+    
+                // Create a red polyline for the route
+                var route = L.Routing.control({
+                    waypoints: randomRoute.map(coord => L.latLng(coord)),
+                    routeWhileDragging: true
+                }).addTo(map);
+    
+                // Add a car icon
+                var carIcon = L.icon({
+                    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+    
+                // Create a car marker
+                var carMarker = L.marker(randomRoute[0], { icon: carIcon }).addTo(map);
+    
+                // Animate the car along the route
+                var i = 0;
+                setInterval(function () {
+                    if (i < randomRoute.length - 1) {
+                        i++;
+                        carMarker.setLatLng(randomRoute[i]);
+                    }
+                }, 1000); // Adjust the interval (in milliseconds) for the animation speed
+            });
+        </script>
+    </body>
+    
+    </html>
+    
+
+
+
+
+
+
+
+    
+
+    <!-- Footer (Copy from the timetable page) -->
+    <footer class="bg-dark text-white mt-5">
+        <div class="container footer-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@wurzburgtransport.com</p>
+                    <p>Phone: +49 123 456 789</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for updates.</p>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2024 Wurzburg Transport</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap and FontAwesome JS (Copy from the timetable page) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Dummy Timetable Generation Script (Copy from the timetable page) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Dummy data for demonstration
+            var dummyTimetableData = [
+                { time: "08:00", number: "Bus 101", departure: "Würzburg Hbf", arrival: "Würzburg Zellerau" },
+                // Add more dummy timetable entries as needed
+            ];
+
+            // Set the default selected item details (first entry)
+            document.getElementById("selectedTime").innerText = "Time: " + dummyTimetableData[0].time;
+            document.getElementById("selectedNumber").innerText = "Bus/Tram Number: " + dummyTimetableData[0].number;
+            document.getElementById("selectedFromStation").innerText = "From: " + dummyTimetableData[0].departure;
+            document.getElementById("selectedToStation").innerText = "To: " + dummyTimetableData[0].arrival;
+        });
+    </script>
+
+<style>
+    /* ... your existing styles ... */
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .footer-container {
+        padding-top: 20px;
+        flex-shrink: 0;
+    }
+</style>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+/* Add your custom styles here */
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.hero-section {
+    padding: 100px 0;
+    background-color: #ff8080; /* Light Red */
+    color: #ffffff; /* White */
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+}
+
+.btn-primary {
+    background-color: #ff3333; /* Darker Red */
+    border-color: #ff3333;
+}
+
+.btn-primary:hover {
+    background-color: #cc0000; /* Dark Red */
+    border-color: #cc0000;
+}
+
+.services-section,
+.about-section,
+.contact-section {
+    padding: 80px 0;
+}
+
+
+
+/* Language Buttons */
+#englishBtn, #germanBtn {
+    margin-left: 10px;
+}
+
+/* ... (rest of the styles remain the same) */
+
+
